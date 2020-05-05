@@ -38,4 +38,11 @@ public class User implements Comparable<User> {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
