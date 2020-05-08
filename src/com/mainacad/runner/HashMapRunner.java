@@ -18,8 +18,8 @@ public class HashMapRunner {
         hashmap.put(2, users.get(2));
         hashmap.put(3, users.get(3));
         hashmap.put(4, users.get(4));
-        hashmap.put(5, users.get(5));
-        hashmap.put(6, users.get(6));
+        hashmap.put(5, users.get(0));
+        hashmap.put(6, users.get(1));
         System.out.println("toString: " + hashmap + "\n");
 
 
@@ -40,6 +40,10 @@ public class HashMapRunner {
         System.out.println();
 
 
+        hashmap.forEach((key, value) -> System.out.println(key + " - " + value));
+        System.out.println();
+
+
         Iterator<Map.Entry<Integer, User>> itr1 = hashmap.entrySet().iterator();
         while (itr1.hasNext()) {
             Map.Entry<Integer, User> entry = itr1.next();
@@ -49,10 +53,28 @@ public class HashMapRunner {
 
         // add and order change
         hashmap.put(-1, users.get(0));
-        for (Map.Entry<Integer, User> entry : hashmap.entrySet())
-            System.out.println(entry.getKey() + " = " + entry.getValue());
+        hashmap.forEach((key, value) -> System.out.println(key + " - " + value));
         System.out.println();
 
+
+
+
+        // getOrDefault
+        User user1 = hashmap.getOrDefault(1, new User());
+        System.out.println(user1);
+
+        User user2 = hashmap.getOrDefault(1000, new User());
+        System.out.println(user2);
+
+
+
+        // replaceAll
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        map.put(3, "three");
+        map.replaceAll((key, value) -> "Number " + value);
+        map.forEach((key, value) -> System.out.println(key + " - " + value));
 
     }
 }
