@@ -68,13 +68,40 @@ public class HashMapRunner {
 
 
 
-        // replaceAll
+        // replaceAll'[4
+
         HashMap<Integer, String> map = new HashMap<>();
         map.put(1, "one");
         map.put(2, "two");
         map.put(3, "three");
         map.replaceAll((key, value) -> "Number " + value);
         map.forEach((key, value) -> System.out.println(key + " - " + value));
+        System.out.println();
+
+        // putIfAbsent
+        System.out.println("putIfAbsent");
+        map.putIfAbsent(3, "new three");
+        map.putIfAbsent(4, "four");
+        map.forEach((key, value) -> System.out.println(key + " - " + value));
+
+        // remove
+        System.out.println("remove");
+        map.remove(3, "new three");
+        map.remove(4, "four");
+        map.forEach((key, value) -> System.out.println(key + " - " + value));
+        System.out.println();
+
+        // computeIfPresent
+        System.out.println("computeIfPresent");
+        map.computeIfPresent(3, (key, value) -> value + " Compute");
+        map.forEach((key, value) -> System.out.println(key + " - " + value));
+
+        // merge
+        System.out.println("merge");
+        map.merge(3,"Number three Compute",  (key, value) -> value + " Merge");
+        map.forEach((key, value) -> System.out.println(key + " - " + value));
+
+
 
     }
 }
